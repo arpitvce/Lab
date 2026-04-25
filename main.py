@@ -16,18 +16,19 @@ def analyse(emf:str,volume:str)->dict:
         if len(emf)<2:
             raise ValueError("Only One Value Passed")
         for i in range(len(emf)-1):
-            val=(emf[i]-emf[i+1])/(volume[i+1]-volume[i])
+            val=(emf[i+1]-emf[i])/(volume[i+1]-volume[i])
             arr.append(val)
         index=arr.index(max(arr))
         equivalence_point=(volume[index]+volume[index+1])/2
         pl.figure()
         pl.plot(volume,emf)
-        pl.axvline(equivalence_point,linestyle="--",label=f"Equivalence Point{equivalence_point:.2f}"
+        pl.axvline(equivalence_point,linestyle="--",label=f"Equivalence Point{equivalence_point:.2f}")
         pl.xlabel("Volume")
         pl.ylabel("EMF")
         pl.grid()
         pl.savefig("potent1.png")
         pl.show()
+        pl.close()
         return {"Equivalence Point":equivalence_point,"dE/dV":arr}
 
     except ZeroDivisionError:
