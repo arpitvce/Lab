@@ -26,7 +26,7 @@ def analyse(emf:str,volume:str)->dict:
         pl.xlabel("Volume")
         pl.ylabel("EMF")
         pl.grid()
-        pl.savefig("potent1.png")
+        pl.savefig("/static/graph.png")
         pl.show()
         pl.close()
         return {"Equivalence Point":equivalence_point,"dE/dV":arr}
